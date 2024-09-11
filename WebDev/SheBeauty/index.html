@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shee Beauty</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      * {box-sizing: border-box;}
+      body {
+        font-family: Verdana, sans-serif;
+         height:100%;
+        max-width: 480px;
+        min-width: 100%;
+        background-image: linear-gradient(mediumorchid, fuchsia, deeppink, hotpink, pink, lightpink);
+      }
+      .mySlides {display: none;}
+      img {
+        vertical-align: middle;
+        width: 100%;
+      }
+
+      .navbar {
+        width: 100%;
+        overflow: hidden;
+        background-image: linear-gradient(transparent, fuchsia, deeppink, transparent);
+      }
+      .navbar .search-container {
+        float: right;
+      }
+      .navbar a {
+        float: left;
+        text-align: center;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+      }
+      .navbar input[type=text] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-position: 10px 10px; 
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+      }
+      input[type=text]:focus {
+        width: 100%;
+      }
+      .navbar .search-container button {
+        float: right;
+        height: 100%;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: #717171;
+        border-radius: 2pt;
+        cursor: pointer;
+        box-sizing: border-box;
+      }  
+      .navbar a:hover {
+        background-image: linear-gradient(lightpink, transparent);
+        color: #000;
+      }
+      .navbar .active {
+        background-image: linear-gradient(mediumorchid, fuchsia);
+      }
+      @media screen and (max-width: 500px) {
+        .navbar a {
+          float: none;
+          display: block;
+        }
+        .navbar input[type=text] {
+          border: 1px solid #030303;
+        }        
+      }
+      .dropbtn {
+        background-color: inherit;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+      }
+      .dropbtn .li {
+        text-decoration: none;
+      }
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: inherit;
+      }
+        
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-image: linear-gradient(fuchsia, hotpink, pink, lightpink, burlywood);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+      .dropdown-content ul {
+        list-style-type: none;
+        text-align: left;
+      }
+      .dropdown-content a:hover {
+        background-color: lightpink;
+      }
+      .show {
+        display:block;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Caption text */
+      .text {
+        color: chocolate;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: black;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: antiquewhite;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active {
+        background-color: darksalmon;
+      }
+
+      /* Fading animation */
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+        .text {font-size: 11px}
+      }
+      .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        perspective: 1000px;
+        float: right;
+        border: none;
+        border-radius: 3%;
+      }
+      .flip-card-services {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        perspective: 1000px;
+        float: left;
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-card-services:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+
+      .flip-card-front {
+        background-color: transparent;
+        color: black;
+      }
+
+      .flip-card-back {
+        background-image: linear-gradient(fuchsia, hotpink, pink, lightpink, burlywood);
+        color: white;
+        transform: rotateY(180deg);
+      }
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        background-color: magenta;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        color: lightpink;
+        text-shadow: hotpink;
+      }
+      .input-container {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .icon {
+        padding: 10px;
+        background: dodgerblue;
+        color: white;
+        min-width: 50px;
+        text-align: center;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        outline: none;
+      }
+
+      .input-field:focus {
+        border: 2px solid dodgerblue;
+      }
+
+      /* Set a style for the submit button */
+      .btn {
+        background-color: dodgerblue;
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+
+      .btn:hover {
+        opacity: 1;
+      }
+      footer {
+        text-align: center;
+        position: fixed bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+      <a class="navbar active" href="#"><i class="fa fa-fw fa-home"></i>Shee Beauty</a>
+      <div class="navbar-dropdown">
+          <a href="#" onclick="dropdownFunction()" class="dropbtn"><i class="fa fa-fw fa-phone"></i> Contact Us</a>
+          <div id="myDropdown" class="dropdown-content">
+            <ul>
+              <li>
+                <a href="https://www.instagram.com/shilababz/"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-fw fa-facebook"></i> Facebook</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-fw fa-envelope"></i> Email</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-fw fa-support"></i> Support Us</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+      <div class="search-container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search..." name="search">
+            <button type="search"><i class="fa fa-search"></i></button>
+          </form>
+      </div>
+    </div>
+    </header>
+    <main>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 4</div>
+          <img src="massage.jpg" style="width:100%;height:300px;">
+          <div class="text">Caption Text</div>
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <img src="pedicure.jpg" style="width:100%;height:300px;">
+          <div class="text">Caption Two</div>
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 4</div>
+          <img src="massage.jpg" style="width:100%;height:300px;">
+          <div class="text">Caption Three</div>
+        </div>
+  
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <img src="pedicure.jpg" style="width:100%;height:300px;">
+          <div class="text">Caption Three</div>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+      </div>
+      <div class="container-massage">
+        <ul>
+          <li>Full body & Face | Kshs 8000 • 85 mins</li>
+          <li>Body Scrub | Kshs 11000 • 130 mins</li>
+          <li>Full body exfoliation & Body scrub | Kshs 17300 • 240 mins</li>
+        </ul>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="massage.jpg" alt="Avatar" style="width:300px;height:300px;">
+              <div class="text">Massage</div>
+            </div>
+            <div class="flip-card-back">
+              <h1>Want a Massage?</h1>
+              <p>How about booking a session with a professional masseuse</p>
+              <button id="bookBtn">Book A Session</button>
+              <div id="myModal" class="modal">
+                <div class="modal-content">
+                  <form action="/action_page.php" style="max-width:500px;margin:auto">
+                    <h2>Book A Session</h2>
+                    <div class="input-container">
+                      <i class="fa fa-user icon"></i>
+                      <input class="input-field" type="text" placeholder="Name" name="usrnm">
+                    </div>
+                    <div class="input-container">
+                      <i class="fa fa-phone icon"></i>
+                      <input class="input-field" type="tel" placeholder="Phone No." name="tel">
+                    </div>                  
+                    <button type="submit" class="btn">Book</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <div class="flip-card-services">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="massage.jpg" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <h2>Our Services</h2>
+              <p>We offer a wide range of beauty services</p>
+              <ul>
+                <li>Cosmetics</li>
+                <li>Hairdressing</li>
+                <li>Massage</li>
+                <li>Body Treatments</li>
+                <li>Aromatherapy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <p>Cosmetics are substances or products used to enhance or alter the appearance of the face or fragrance and texture of the body. Many cosmetics are designed for use of applying to the face, hair, and body. They are generally mixtures of chemical compounds; some being derived from natural sources (such as coconut oil), and some being synthetics or artificial. Cosmetics applied to the face to enhance its appearance are often called make-up or makeup. Common make-up items include: lipstick, mascara, eye shadow, foundation, blush, and contour. Other common cosmetics can include skin cleansers, body lotions, shampoo and conditioner, hairstyling products (gel, hair spray, etc.), perfume and cologne.</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy;Sheila</p>
+    </footer>
+    <script>
+      /* When the user clicks on the button,
+      toggle between hiding and showing the dropdown content */
+      function dropdownFunction() {document.getElementById("myDropdown").classList.toggle("show");
+        
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+      }
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("bookBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      btn.onclick = function(){
+        var name = document.getElementsByClassName("name");
+        var tel = document.getElementsByClassName("tel");
+        let message = ("Thank You ", $name, "You will recieve a call within 24Hrs");
+        alert(message);
+      }
+    </script>
+  </body>
+</html>

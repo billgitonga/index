@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shee Beauty - Enhances Your Radiance</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Open+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z4G4fA7+7DXt2iCqR5G41K51PFh2YRU7cRuQ17rVV6cFl22a4E4a40551E46491a62d65025f1d04/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        h1, h2, h3, h4, h5, h6, h8{
+            font-family: "Oswald";
+        }
+
+        body {
+            font-family: "Open Sans";
+            background-color: black;
+            color: wheat;
+        }
+
+        .w3-image {
+            opacity: 0.9;
+        }
+
+        .shee-color {
+            color: wheat;
+        }
+
+        .w3-hover-opacity:hover {
+            opacity: 1;
+        }
+
+        .service-box {
+            margin: 20px 0;
+            padding: 20px;
+            border: none;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            color: wheat;
+            background-color: black;
+        }
+
+        .service-box:hover {
+            background-color: wheat;
+            color: black;
+        }
+
+        .service-box i {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: wheat;
+            color: black;
+            border: black solid;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: black;
+            color: wheat;
+        }
+
+        footer {
+            background-color: wheat;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .w3-bar .w3-button {
+            color: wheat;
+            background-color: black;
+        }
+
+        .w3-container a {
+            text-decoration: none;
+            color: wheat;
+        }
+
+        .w3-container a:hover {
+            color: wheat;
+            background-color: black;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .overlay-content {
+            background-color: wheat;
+            color: #000;
+            padding: 20px;
+            width: 50%;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .overlay-content .w3-button {
+            background-color: black;
+            color: wheat;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button[type="submit"] {
+            background-color: transparent transparent transparent;
+            color: black;
+            border: 2px solid orange;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: black;
+            color: wheat;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: wheat;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .container {
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .column {
+            width: 50%; /* Adjust based on requirements */
+        }
+        /* Example for devices with a maximum width of 768px (tablets, mobile phones) */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .w3-container {
+                padding: 10px;
+            }
+
+            .w3-col {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .service-box {
+                margin: 10px 0;
+            }
+
+            header {
+                text-align: center;
+            }
+            .overlay-content {
+                width: 90%; /* Adjust as needed */
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="w3-bar w3-black w3-hide-small">
+        <a href="#" class="w3-bar-item w3-button"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa-brands fa-snapchat"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-right w3-tag"><span style="font-weight:bold;">Shee Beauty</span></a>
+    </div>
+
+    <!-- Header -->
+    <header class="w3-container w3-center w3-padding-48 w3-white">
+        <h1 class="w3-jumbo w3-tag"><b><span class="shee-color">SHEE</span></b></h1>        <h1 class="w3-xxxlarge w3-text-black w3-hide-small"><b>BEAUTY PALACE</b></h1>
+        <h6>Enhances Your <span class="w3-tag shee-color">Radiance</span></h6>
+        <h8 id="date"></h8>
+    </header>
+
+    <!-- Main Content -->
+    <div class="w3-content" style="max-width:1600px">
+        <header class="w3-display-container w3-wide" id="home">
+            <img class="w3-image w3-hover-opacity" src="https://t3.ftcdn.net/jpg/08/19/46/42/360_F_819464291_ZhAbSfssCMiGZYNUavZq7gjWytu01GLX.jpg" alt="Beauty Salon" width="1600" height="1060">
+            <div class="w3-display-left w3-padding-large">
+                <h1 class="w3-text-white">Shee</h1>
+                <h1 class="w3-jumbo w3-text-white w3-hide-small"><b>BEAUTY PALACE</b></h1>
+                <h6><button id="booking-button" class="w3-opacity w3-hover-opacity-off" onclick="toggleBookingOverlay()">BOOK SESSION</button></h6>
+            </div>
+        </header>
+
+        <main>
+            <!-- Services Section -->
+            <div class="w3-container w3-center w3-padding-64" id="services">
+                <h2><b>Our Services</b></h2>
+                <p>Indulge in a world of pure pampering as our skilled artisans enhance your natural beauty. From flawless skin to sculpted features, our customized treatments deliver extraordinary results all at the comfort of your home.</p>
+
+                <div class="w3-row">
+                    <div class="w3-col l4">
+                        <div class="service-box">
+                            <i class="fa fa-face-smile"></i>
+                            <h3>Facial Treatments</h3>
+                            <p>Experience the ultimate skin rejuvenation.</p>
+                            <button onclick="toggleBookingOverlay()">Book Session</button>
+                        </div>
+                    </div>
+                    <div class="w3-col l4">
+                        <div class="service-box">
+                            <i class="fa fa-scissors"></i>
+                            <h3>Hair Styling</h3>
+                            <p>Transform your look with our expert hairstylists.</p>
+                            <button onclick="toggleBookingOverlay()">Book Session</button>
+                        </div>
+                    </div>
+                    <div class="w3-col l4">
+                        <div class="service-box">
+                            <i class="fa fa-paint-brush"></i>
+                            <h3>Makeup Artistry</h3>
+                            <p>Create your desired look for any occasion.</p>
+                            <button onclick="toggleBookingOverlay()">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-row">
+                    <div class="w3-col l4">
+                        <div class="service-box">
+                            <i class="fa fa-heart"></i>
+                            <h3>Massage Therapy</h3>
+                            <p>Unwind and relax with our soothing massages.</p>
+                            <button onclick="toggleBookingOverlay()">Book Session</button>
+                        </div>
+                    </div>
+                    <div class="w3-col l4">
+                        <div class="service-box">
+                            <i class="fa fa-hands"></i>
+                            <h3>Nail Care</h3>
+                            <p>Pamper your hands and feet with luxurious treatments.</p>
+                            <button onclick="toggleBookingOverlay()">Book Session</button>
+                        </div>
+                    </div>
+                    <div class="w3-col l4">
+                        <div class="service-box">
+                            <i class="fa fa-soap"></i>
+                            <h3>Body Treatments</h3>
+                            <p>Indulge in body scrubs, wraps, and more.</p>
+                            <button onclick="toggleBookingOverlay()">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+                <p>Discover the world of Shee Beauty Salon, where you'll find a smile that's worth every smile you've ever received. Book a session today and let our skilled artisans take care of your skin and enhance your natural beauty.</p>
+                <p><strong>Ready to book your appointment? Contact us today!</strong></p>
+                <a href="#contact" class="w3-button w3-white" onclick="toggleBookingOverlay()">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Overlay -->
+    <div id="bookingOverlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn" onclick="toggleBookingOverlay()">&times;</span>
+            <h2>Book Your Session</h2>
+            <form id="bookingForm" action="/book-session" method="POST">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="service">Choose a Service:</label><br>
+                <select id="service" name="service" required>
+                    <option value="facial">Facial Treatments</option>
+                    <option value="hair">Hair Styling</option>
+                    <option value="makeup">Makeup Artistry</option>
+                    <option value="massage">Massage Therapy</option>
+                    <option value="nails">Nail Care</option>
+                    <option value="body">Body Treatments</option>
+                </select><br><br>
+                <label for="date">Preferred Date:</label><br>
+                <input type="date" id="date" name="date" required><br><br>
+                <label for="time">Preferred Time:</label><br>
+                <input type="time" id="time" name="time" required><br><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Open 9am - 7pm, Mon-Fri & Sat-Sun</p>
+        <p>&copy;<span id="currentYear"></span> Shee Beauty Palace. All Rights Reserved.</p>
+        <p>Designed by Bill Gitonga</p>
+    </footer>
+
+    <!-- JavaScript for Booking Overlay -->
+    <script>
+        // Show the booking overlay
+        function toggleBookingOverlay() {
+            var overlay = document.getElementById('bookingOverlay');
+            overlay.style.display = (overlay.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // Update the date and time every second
+        setInterval(function() {
+            var today = new Date();
+            var date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+            var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+            document.getElementById('date').innerHTML = 'Current Date and Time: '+ date +' ' + time;
+        }, 1000);
+
+        // Disable form submission if the email address is not valid
+        document.getElementById('email').addEventListener('input', function(event) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(event.target.value)) {
+                event.target.setCustomValidity('Please enter a valid email address.');
+            } else {
+                event.target.setCustomValidity('');
+            }
+        });
+        // Display a warning message if the email address is already registered
+        var registeredEmails = ['example@example.com', 'another@example.com'];
+        document.getElementById('email').addEventListener('input', function(event) {
+            var email = event.target.value;
+            if (registeredEmails.includes(email)) {
+                event.target.setCustomValidity('Email address is already registered.');
+            } else {
+                event.target.setCustomValidity('');
+            }
+        });
+        // Prevent form submission if any required fields are empty
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            var requiredFields = document.querySelectorAll('[required]');
+            requiredFields.forEach(function(field) {
+                if (field.value === '') {
+                    event.preventDefault();
+                    alert('Please fill in all required fields.');
+                }
+            });
+        });
+        // Add a smooth scrolling effect to navigation links
+        var links = document.querySelectorAll('a[href^="#"]');
+        links.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior:'smooth' });
+            });
+        });
+        // Close the booking overlay when the user clicks outside it
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('bookingOverlay')) {
+                toggleBookingOverlay();
+            }
+        });
+        // Display a confirmation message when the user submits the booking form
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            var name = document.getElementById('name').value;
+            var message = ("Thank You ", name, " for booking a session at Shee Beauty Palace. We will confirm your details shortly.");
+            alert(message);
+        });
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Extract form data
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var service = document.getElementById('service').value;
+            var date = document.getElementById('date').value;
+            var time = document.getElementById('time').value;
+
+            // Create booking data object
+            var bookingData = {
+                name: name,
+                email: email,
+                service: service,
+                date: date,
+                time: time
+            };
+
+            // Send booking data to the server (replace with your server endpoint)
+            fetch('/api/book-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookingData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Your booking has been confirmed. You will receive a confirmation email shortly.');
+                    toggleBookingOverlay(); // Close overlay
+                } else {
+                    alert('There was an error with your booking. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error with your booking. Please try again.');
+            });
+        });
+        // Update the current year in the footer
+        const currentYear = new Date().getFullYear();
+        document.getElementById('currentYear').textContent = currentYear;
+    </script>
+</body>
+
+</html>
